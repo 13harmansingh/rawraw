@@ -9,23 +9,56 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Body */
+/* Font Loading */
+@font-face {
+  font-family: 'Roboto';
+  src: url('path/to/roboto.woff2') format('woff2'), /* Replace with your font paths */
+       url('path/to/roboto.woff') format('woff');
+  font-weight: 400; /* Or other weights */
+  font-style: normal;
+  font-display: swap; /* Recommended */
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('path/to/playfairdisplay.woff2') format('woff2'), /* Replace with your font paths */
+       url('path/to/playfairdisplay.woff') format('woff');
+  font-weight: 700; /* Or other weights */
+  font-style: normal;
+  font-display: swap; /* Recommended */
+}
+
+
+:root {
+  --primary-color: #ff6f61;
+  --secondary-color: #e65749;
+  --text-color: #333;
+  --background-color: #fff;
+  --heading-font: 'Playfair Display', serif;
+  --body-font: 'Roboto', sans-serif;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #fff;
-  color: #333;
+  font-family: var(--body-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
   line-height: 1.8;
-  padding-top: 80px; /* Push content down to prevent overlap */
+  padding-top: 80px; /* Adjust as needed */
 }
 
 /* Typography */
 h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--heading-font);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  transition: color 0.3s ease; /* Add transition to all links */
+}
+
+a:hover {
+  color: var(--primary-color);
 }
 
 /* Header */
@@ -34,7 +67,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--background-color);
   padding: 15px 40px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -43,57 +76,58 @@ header {
   align-items: center;
 }
 
-/* Logo */
-header .logo a {
+.logo a {
   font-size: 2rem;
-  color: #333;
   font-weight: 700;
 }
 
-/* Desktop Navigation */
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: flex-end;
-  padding: 0;
+  justify-content: flex-end; /* Align to the right */
 }
 
-nav ul li {
+nav li {
   margin-left: 30px;
 }
 
-nav ul li a {
+nav a {
   font-size: 1rem;
-  color: #333;
   font-weight: 500;
-  transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-  color: #ff6f61;
-}
 
-/* Mobile Menu Icon */
+/* Mobile Menu */
 .menu-icon {
   display: none;
   font-size: 2rem;
   cursor: pointer;
+  background: none; /* Remove default button styles */
+  border: none;
+  padding: 0; /* Remove default button padding */
 }
 
-/* Mobile Dropdown Menu */
+.menu-icon.active::before {  /* Style the icon when active */
+    content: '\2715'; /* Example: a cross */
+}
+
+.menu-icon::before {
+    content: '\2261'; /* Example: a hamburger */
+}
+
 .mobile-menu {
   position: absolute;
-  top: 60px; /* Adjusted to prevent overlap */
+  top: 80px; /* Adjust based on header height */
   left: 0;
   width: 100%;
-  background-color: white;
+  background-color: var(--background-color);
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: none; /* Initially hidden */
 }
 
 .mobile-menu.active {
-  display: block; /* Show when active */
+  display: block;
 }
 
 .mobile-menu ul {
@@ -101,18 +135,14 @@ nav ul li a:hover {
   padding: 10px 0;
 }
 
-.mobile-menu ul li {
+.mobile-menu li {
   padding: 15px;
 }
 
-.mobile-menu ul li a {
+.mobile-menu a {
   font-size: 1.2rem;
-  color: #333;
   font-weight: 500;
-}
-
-.mobile-menu ul li a:hover {
-  color: #ff6f61;
+  display: block; /* Make links fill the width */
 }
 
 /* Responsive Design */
@@ -127,12 +157,11 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-  background-image: url('images/img7.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height for better mobile behavior */
   color: white;
   display: flex;
   justify-content: center;
@@ -142,7 +171,7 @@ nav ul li a:hover {
   padding: 0 20px;
 }
 
-.hero::after {
+.hero::before { /* Use ::before for the overlay */
   content: "";
   position: absolute;
   top: 0;
@@ -153,25 +182,27 @@ nav ul li a:hover {
   z-index: 1;
 }
 
-.hero-text {
+.hero-content { /* A wrapper for hero text */
   z-index: 2;
   max-width: 600px;
+  margin: 0 auto; /* Center the content */
 }
 
-.hero-text h1 {
+.hero h1 {
   font-size: 4rem;
   margin-bottom: 20px;
   font-weight: 700;
 }
 
-.hero-text p {
+.hero p {
   font-size: 1.5rem;
   margin-bottom: 30px;
 }
 
 .cta-button {
+  display: inline-block; /* Make it behave like a link */
   padding: 15px 40px;
-  background-color: #ff6f61;
+  background-color: var(--primary-color);
   color: white;
   font-size: 1.2rem;
   font-weight: 600;
@@ -180,11 +211,12 @@ nav ul li a:hover {
 }
 
 .cta-button:hover {
-  background-color: #e65749;
+  background-color: var(--secondary-color);
   transform: translateY(-5px);
 }
 
-/* Modal (Pop-Up) */
+
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -198,8 +230,12 @@ nav ul li a:hover {
   z-index: 999;
 }
 
+.modal.show {
+  display: flex; /* Show the modal using flexbox */
+}
+
 .modal-content {
-  background: white;
+  background: var(--background-color);
   padding: 30px;
   border-radius: 10px;
   text-align: center;
@@ -208,17 +244,20 @@ nav ul li a:hover {
   width: 90%;
 }
 
-.close-modal {
+.close-btn {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #333;
+  color: var(--text-color);
+  background: none;
+  border: none;
+  padding: 0;
 }
 
-.close-modal:hover {
-  color: #ff6f61;
+.close-btn:hover {
+  color: var(--primary-color);
 }
 
 /* Footer */
@@ -229,17 +268,17 @@ footer {
   padding: 40px 0;
 }
 
-footer .social-icons {
+.social-icons {
   margin-top: 20px;
 }
 
-footer .social-icons a {
+.social-icons a {
   margin: 0 10px;
   color: #fff;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
 }
 
-footer .social-icons a:hover {
-  color: #ff6f61;
+.social-icons a:hover {
+  color: var(--primary-color);
 }
+
