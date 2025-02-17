@@ -80,3 +80,52 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Cocktail Modal Logic
+    const cocktailItems = document.querySelectorAll(".cocktail-item");
+    const modal = document.createElement("div");
+    modal.classList.add("cocktail-modal");
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3></h3>
+            <img src="" alt="Cocktail Image">
+            <p class="description"></p>
+            <h4>Ingredients</h4>
+            <ul class="ingredients"></ul>
+        </div>`;
+    document.body.appendChild(modal);
+
+    const modalContent = modal.querySelector(".modal-content");
+    
+    cocktailItems.forEach(item => {
+        item.addEventListener("click", () => {
+            const name = item.querySelector("h3").textContent;
+            const description = item.querySelector("p").textContent;
+            const image = item.querySelector("img").src;
+
+            modal.querySelector("h3").textContent = name;
+            modal.querySelector(".description").textContent = description;
+            modal.querySelector("img").src = image;
+
+            // Dummy ingredients (replace with actual data if needed)
+            const ingredients = ["Premium Spirits", "Fresh Ingredients", "Secret Touch"];
+            const ingredientsList = modal.querySelector(".ingredients");
+            ingredientsList.innerHTML = "";
+            ingredients.forEach(ingredient => {
+                const li = document.createElement("li");
+                li.textContent = ingredient;
+                ingredientsList.appendChild(li);
+            });
+
+            modal.classList.add("show");
+        });
+    });
+
+    // Close Modal Logic
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target.classList.contains("close-btn")) {
+            modal.classList.remove("show");
+        }
+    });
+});
