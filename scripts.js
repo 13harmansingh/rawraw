@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
+    document.addEventListener("click", (e) => {
+    if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        document.querySelector(e.target.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+});
+        {anchor.addEventListener("click", function (e) {
             e.preventDefault();
             document.querySelector(this.getAttribute("href")).scrollIntoView({
                 behavior: "smooth",
