@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Reset & Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,16 +9,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Body and Fonts */
+/* Body */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #fff;
   color: #333;
   line-height: 1.8;
-  padding: 0;
-  margin: 0;
+  padding-top: 80px; /* Push content down to prevent overlap */
 }
 
+/* Typography */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
 }
@@ -41,11 +41,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-/* Push main content down to prevent overlap */
-body {
-  padding-top: 80px; /* Adjust based on header height */
 }
 
 /* Logo */
@@ -78,23 +73,23 @@ nav ul li a:hover {
   color: #ff6f61;
 }
 
-/* Mobile Menu */
+/* Mobile Menu Icon */
 .menu-icon {
   display: none;
   font-size: 2rem;
   cursor: pointer;
 }
 
-/* Dropdown Menu */
+/* Mobile Dropdown Menu */
 .mobile-menu {
   position: absolute;
-  top: 100%;
+  top: 60px; /* Adjusted to prevent overlap */
   left: 0;
   width: 100%;
   background-color: white;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: none; /* Hidden by default */
+  display: none; /* Initially hidden */
 }
 
 .mobile-menu.active {
@@ -120,7 +115,7 @@ nav ul li a:hover {
   color: #ff6f61;
 }
 
-/* Responsive Fixes */
+/* Responsive Design */
 @media (max-width: 768px) {
   nav ul {
     display: none;
@@ -224,78 +219,6 @@ nav ul li a:hover {
 
 .close-modal:hover {
   color: #ff6f61;
-}
-
-/* About Us */
-.about {
-  padding: 80px 40px;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Signature Cocktails */
-.cocktails {
-  padding: 80px 40px;
-  text-align: center;
-  background-color: #f9f9f9;
-}
-
-.cocktail-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.cocktail-item {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.cocktail-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.cocktail-item img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  loading: lazy;
-}
-
-/* Reviews */
-.reviews {
-  padding: 80px 40px;
-  text-align: center;
-  background-color: #fff;
-}
-
-.review-item {
-  background-color: #f9f9f9;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  text-align: center;
-}
-
-/* Location */
-.location {
-  padding: 80px 40px;
-  text-align: center;
-}
-
-.map iframe {
-  border: 0;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 600px;
-  height: 400px;
 }
 
 /* Footer */
