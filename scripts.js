@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
-    // Cocktail Modal Logic
     const cocktailItems = document.querySelectorAll(".cocktail-item");
     const modal = document.createElement("div");
     modal.classList.add("cocktail-modal");
@@ -96,8 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>`;
     document.body.appendChild(modal);
 
-    const modalContent = modal.querySelector(".modal-content");
-    
     cocktailItems.forEach(item => {
         item.addEventListener("click", () => {
             const name = item.querySelector("h3").textContent;
@@ -108,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.querySelector(".description").textContent = description;
             modal.querySelector("img").src = image;
 
-            // Dummy ingredients (replace with actual data if needed)
             const ingredients = ["Premium Spirits", "Fresh Ingredients", "Secret Touch"];
             const ingredientsList = modal.querySelector(".ingredients");
             ingredientsList.innerHTML = "";
@@ -122,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Close Modal Logic
     modal.addEventListener("click", (e) => {
         if (e.target === modal || e.target.classList.contains("close-btn")) {
             modal.classList.remove("show");
