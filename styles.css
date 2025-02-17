@@ -346,21 +346,21 @@ footer .social-icons a:hover {
     display: block; /* Show the menu icon on mobile */
   }
 }
-
-/* Subtle Cocktail Modal Styling */
+/* Subtle Cocktail Modal */
 .cocktail-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+  background: rgba(0, 0, 0, 0.7); /* Darker background for better focus */
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000; /* Make sure modal is above everything */
 }
 
 .cocktail-modal.show {
@@ -373,11 +373,11 @@ footer .social-icons a:hover {
   padding: 20px;
   border-radius: 10px;
   width: 90%;
-  max-width: 400px; /* Smaller and centered */
+  max-width: 350px; /* Smaller modal */
   text-align: center;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: scale(0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(0.85);
   transition: transform 0.3s ease;
 }
 
@@ -398,22 +398,22 @@ footer .social-icons a:hover {
   color: #ff6f61;
 }
 
-/* Smaller Image for a Subtle Effect */
+/* Reduce Image Size */
 .cocktail-modal img {
-  width: 80%; /* Reduce size */
-  max-width: 250px;
+  width: 70%; /* Smaller image */
+  max-width: 200px;
   border-radius: 8px;
   margin: 10px auto;
   display: block;
 }
 
 .cocktail-modal h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
 }
 
 .cocktail-modal p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #555;
 }
 
